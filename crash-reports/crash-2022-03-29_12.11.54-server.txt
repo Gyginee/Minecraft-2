@@ -1,0 +1,269 @@
+---- Minecraft Crash Report ----
+// You should try our sister game, Minceraft!
+
+Time: 3/29/22, 12:11 PM
+Description: Watching Server
+
+java.lang.Error: Watchdog
+	at dqv.a(SourceFile:138)
+	at dqv.a(SourceFile:105)
+	at dqv.a(SourceFile:95)
+	at adw.a(SourceFile:303)
+	at net.minecraft.server.MinecraftServer.b(SourceFile:907)
+	at acx.b(SourceFile:322)
+	at net.minecraft.server.MinecraftServer.a(SourceFile:851)
+	at net.minecraft.server.MinecraftServer.w(SourceFile:697)
+	at net.minecraft.server.MinecraftServer.a(SourceFile:273)
+	at net.minecraft.server.MinecraftServer$$Lambda$4298/0x0000000801422e98.run(Unknown Source)
+	at java.base@18/java.lang.Thread.run(Thread.java:833)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server Watchdog
+Stacktrace:
+	at dqv.a(SourceFile:138)
+	at dqv.a(SourceFile:105)
+	at dqv.a(SourceFile:95)
+	at adw.a(SourceFile:303)
+	at net.minecraft.server.MinecraftServer.b(SourceFile:907)
+	at acx.b(SourceFile:322)
+	at net.minecraft.server.MinecraftServer.a(SourceFile:851)
+	at net.minecraft.server.MinecraftServer.w(SourceFile:697)
+	at net.minecraft.server.MinecraftServer.a(SourceFile:273)
+
+-- Thread Dump --
+Details:
+	Threads: "Reference Handler" daemon prio=10 Id=2 RUNNABLE
+	at java.base@18/java.lang.ref.Reference.waitForReferencePendingList(Native Method)
+	at java.base@18/java.lang.ref.Reference.processPendingReferences(Reference.java:253)
+	at java.base@18/java.lang.ref.Reference$ReferenceHandler.run(Reference.java:215)
+
+
+"Finalizer" daemon prio=8 Id=3 WAITING on java.lang.ref.ReferenceQueue$Lock@5c1f16bf
+	at java.base@18/java.lang.Object.wait(Native Method)
+	-  waiting on java.lang.ref.ReferenceQueue$Lock@5c1f16bf
+	at java.base@18/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+	at java.base@18/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:176)
+	at java.base@18/java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:183)
+
+
+"Signal Dispatcher" daemon prio=9 Id=4 RUNNABLE
+
+
+"Attach Listener" daemon prio=5 Id=5 RUNNABLE
+
+
+"Notification Thread" daemon prio=9 Id=12 RUNNABLE
+
+
+"Common-Cleaner" daemon prio=8 Id=13 TIMED_WAITING on java.lang.ref.ReferenceQueue$Lock@52d8f34c
+	at java.base@18/java.lang.Object.wait(Native Method)
+	-  waiting on java.lang.ref.ReferenceQueue$Lock@52d8f34c
+	at java.base@18/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+	at java.base@18/jdk.internal.ref.CleanerImpl.run(CleanerImpl.java:140)
+	at java.base@18/java.lang.Thread.run(Thread.java:833)
+	at java.base@18/jdk.internal.misc.InnocuousThread.run(InnocuousThread.java:162)
+
+
+"DestroyJavaVM" prio=5 Id=15 RUNNABLE
+
+
+"Timer hack thread" daemon prio=5 Id=23 TIMED_WAITING
+	at java.base@18/java.lang.Thread.sleep(Native Method)
+	at ad$8.run(SourceFile:784)
+
+
+"Server thread" prio=5 Id=27 RUNNABLE
+	at dqv.a(SourceFile:138)
+	at dqv.a(SourceFile:105)
+	at dqv.a(SourceFile:95)
+	at adw.a(SourceFile:303)
+	at net.minecraft.server.MinecraftServer.b(SourceFile:907)
+	at acx.b(SourceFile:322)
+	at net.minecraft.server.MinecraftServer.a(SourceFile:851)
+	at net.minecraft.server.MinecraftServer.w(SourceFile:697)
+	...
+
+
+"Server console handler" daemon prio=5 Id=29 RUNNABLE (in native)
+	at java.base@18/java.io.FileInputStream.readBytes(Native Method)
+	at java.base@18/java.io.FileInputStream.read(FileInputStream.java:276)
+	at java.base@18/java.io.BufferedInputStream.read1(BufferedInputStream.java:282)
+	at java.base@18/java.io.BufferedInputStream.read(BufferedInputStream.java:343)
+	-  locked java.io.BufferedInputStream@56e77dcf
+	at java.base@18/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:270)
+	at java.base@18/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:313)
+	at java.base@18/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:188)
+	-  locked java.io.InputStreamReader@13e5f977
+	at java.base@18/java.io.InputStreamReader.read(InputStreamReader.java:176)
+	...
+
+
+"Netty Server IO #0" daemon prio=5 Id=30 RUNNABLE
+	at java.base@18/java.util.Collections$SynchronizedCollection.add(Collections.java:2104)
+	-  locked java.util.Collections$SynchronizedRandomAccessList@376bbf5a
+	at aen$1.initChannel(SourceFile:108)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:129)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:112)
+	at io.netty.channel.AbstractChannelHandlerContext.callHandlerAdded(AbstractChannelHandlerContext.java:938)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:609)
+	at io.netty.channel.DefaultChannelPipeline.access$100(DefaultChannelPipeline.java:46)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1463)
+	...
+
+
+"Server Watchdog" daemon prio=5 Id=35 RUNNABLE
+	at java.management@18/sun.management.ThreadImpl.dumpThreads0(Native Method)
+	at java.management@18/sun.management.ThreadImpl.dumpAllThreads(ThreadImpl.java:521)
+	at java.management@18/sun.management.ThreadImpl.dumpAllThreads(ThreadImpl.java:509)
+	at ada.run(SourceFile:49)
+	at java.base@18/java.lang.Thread.run(Thread.java:833)
+
+
+"Netty Server IO #1" daemon prio=5 Id=41 RUNNABLE (in native)
+	at java.base@18/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@18/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:111)
+	at java.base@18/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:129)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@22bc6868
+	-  locked sun.nio.ch.WEPollSelectorImpl@4fd870f5
+	at java.base@18/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:146)
+	at io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:810)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:457)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:986)
+	...
+
+
+"Netty Server IO #2" daemon prio=5 Id=42 RUNNABLE (in native)
+	at java.base@18/sun.nio.ch.WEPoll.wait(Native Method)
+	at java.base@18/sun.nio.ch.WEPollSelectorImpl.doSelect(WEPollSelectorImpl.java:111)
+	at java.base@18/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:129)
+	-  locked io.netty.channel.nio.SelectedSelectionKeySet@73ca0638
+	-  locked sun.nio.ch.WEPollSelectorImpl@1931e674
+	at java.base@18/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:146)
+	at io.netty.channel.nio.SelectedSelectionKeySetSelector.select(SelectedSelectionKeySetSelector.java:68)
+	at io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:810)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:457)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:986)
+	...
+
+
+"Netty Server IO #3" daemon prio=5 Id=43 BLOCKED on java.util.Collections$SynchronizedRandomAccessList@376bbf5a owned by "Netty Server IO #0" Id=30
+	at java.base@18/java.util.Collections$SynchronizedCollection.add(Collections.java:2104)
+	-  blocked on java.util.Collections$SynchronizedRandomAccessList@376bbf5a
+	at aen$1.initChannel(SourceFile:108)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:129)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:112)
+	at io.netty.channel.AbstractChannelHandlerContext.callHandlerAdded(AbstractChannelHandlerContext.java:938)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:609)
+	at io.netty.channel.DefaultChannelPipeline.access$100(DefaultChannelPipeline.java:46)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1463)
+	...
+
+
+"Netty Server IO #4" daemon prio=5 Id=44 BLOCKED on java.util.Collections$SynchronizedRandomAccessList@376bbf5a owned by "Netty Server IO #0" Id=30
+	at java.base@18/java.util.Collections$SynchronizedCollection.add(Collections.java:2104)
+	-  blocked on java.util.Collections$SynchronizedRandomAccessList@376bbf5a
+	at aen$1.initChannel(SourceFile:108)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:129)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:112)
+	at io.netty.channel.AbstractChannelHandlerContext.callHandlerAdded(AbstractChannelHandlerContext.java:938)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:609)
+	at io.netty.channel.DefaultChannelPipeline.access$100(DefaultChannelPipeline.java:46)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1463)
+	...
+
+
+"Netty Server IO #5" daemon prio=5 Id=45 BLOCKED on java.util.Collections$SynchronizedRandomAccessList@376bbf5a owned by "Netty Server IO #0" Id=30
+	at java.base@18/java.util.Collections$SynchronizedCollection.add(Collections.java:2104)
+	-  blocked on java.util.Collections$SynchronizedRandomAccessList@376bbf5a
+	at aen$1.initChannel(SourceFile:108)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:129)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:112)
+	at io.netty.channel.AbstractChannelHandlerContext.callHandlerAdded(AbstractChannelHandlerContext.java:938)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:609)
+	at io.netty.channel.DefaultChannelPipeline.access$100(DefaultChannelPipeline.java:46)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1463)
+	...
+
+
+"Netty Server IO #6" daemon prio=5 Id=46 BLOCKED on java.util.Collections$SynchronizedRandomAccessList@376bbf5a owned by "Netty Server IO #0" Id=30
+	at java.base@18/java.util.Collections$SynchronizedCollection.add(Collections.java:2104)
+	-  blocked on java.util.Collections$SynchronizedRandomAccessList@376bbf5a
+	at aen$1.initChannel(SourceFile:108)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:129)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:112)
+	at io.netty.channel.AbstractChannelHandlerContext.callHandlerAdded(AbstractChannelHandlerContext.java:938)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:609)
+	at io.netty.channel.DefaultChannelPipeline.access$100(DefaultChannelPipeline.java:46)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1463)
+	...
+
+
+"Netty Server IO #7" daemon prio=5 Id=50 BLOCKED on java.util.Collections$SynchronizedRandomAccessList@376bbf5a owned by "Netty Server IO #0" Id=30
+	at java.base@18/java.util.Collections$SynchronizedCollection.add(Collections.java:2104)
+	-  blocked on java.util.Collections$SynchronizedRandomAccessList@376bbf5a
+	at aen$1.initChannel(SourceFile:108)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:129)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:112)
+	at io.netty.channel.AbstractChannelHandlerContext.callHandlerAdded(AbstractChannelHandlerContext.java:938)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:609)
+	at io.netty.channel.DefaultChannelPipeline.access$100(DefaultChannelPipeline.java:46)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1463)
+	...
+
+
+
+Stacktrace:
+	at ada.run(SourceFile:65)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+
+-- Performance stats --
+Details:
+	Random tick rate: 3
+	Level stats: ResourceKey[minecraft:dimension / minecraft:overworld]: players: 0, entities: 167,167,89,529,529,0,0 [minecraft:sheep:38,minecraft:chicken:24,minecraft:pig:23,minecraft:cow:22,minecraft:chest_minecart:21], block_entities: 41 [minecraft:mob_spawner:33,minecraft:beehive:5,minecraft:blast_furnace:1,minecraft:bell:1,minecraft:brewing_stand:1], block_ticks: 15474, fluid_ticks: 35, chunk_source: Chunks[S] W: 2209 E: 167,167,89,529,529,0,0,
+ResourceKey[minecraft:dimension / minecraft:the_nether]: players: 0, entities: 0,0,0,0,0,0,0 [], block_entities: 0 [], block_ticks: 0, fluid_ticks: 0, chunk_source: Chunks[S] W: 0 E: 0,0,0,0,0,0,0,
+ResourceKey[minecraft:dimension / minecraft:the_end]: players: 0, entities: 0,0,0,0,0,0,0 [], block_entities: 0 [], block_ticks: 0, fluid_ticks: 0, chunk_source: Chunks[S] W: 0 E: 0,0,0,0,0,0,0
+
+-- System Details --
+Details:
+	Minecraft Version: 1.18.2
+	Minecraft Version ID: 1.18.2
+	Operating System: Windows Server 2012 R2 (amd64) version 6.3
+	Java Version: 18, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode, sharing), Oracle Corporation
+	Memory: 418639752 bytes (399 MiB) / 1073741824 bytes (1024 MiB) up to 1073741824 bytes (1024 MiB)
+	CPUs: 4
+	Processor Vendor: GenuineIntel
+	Processor Name: Intel(R) Xeon(R) Gold 6252 CPU @ 2.10GHz
+	Identifier: Intel64 Family 6 Model 85 Stepping 5
+	Microarchitecture: Cascade Lake
+	Frequency (GHz): 2.10
+	Number of physical packages: 1
+	Number of physical CPUs: 2
+	Number of logical CPUs: 4
+	Graphics card #0 name: Microsoft Hyper-V Video
+	Graphics card #0 vendor: Microsoft
+	Graphics card #0 VRAM (MB): 0.00
+	Graphics card #0 deviceId: unknown
+	Graphics card #0 versionInfo: DriverVersion=6.3.9600.16384
+	Memory slot #0 capacity (MB): 3968.00
+	Memory slot #0 clockSpeed (GHz): 0.00
+	Memory slot #0 type: Unknown
+	Memory slot #1 capacity (MB): 4224.00
+	Memory slot #1 clockSpeed (GHz): 0.00
+	Memory slot #1 type: Unknown
+	Virtual memory max (MB): 10238.99
+	Virtual memory used (MB): 5516.22
+	Swap memory total (MB): 2048.00
+	Swap memory used (MB): 71.29
+	JVM Flags: 2 total; -Xmx1024M -Xms1024M
+	Server Running: true
+	Player Count: 0 / 20; []
+	Data Packs: vanilla
+	World Generation: Stable
+	Is Modded: Probably not. Server jar signature and brand is untouched
+	Type: Dedicated Server (map_server.txt)
